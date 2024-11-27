@@ -70,7 +70,7 @@
         <div class="col-span-6 sm:col-span-4">
             <x-label for="gender" value="{{ __('Gender') }}" />
             <select id="gender" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.gender">
-                <option value="" disabled>{{ __('Select Gender') }}</option>
+                <option value="" disabled selected>{{ __('Select Gender') }}</option>
                 <option value="Male">{{ __('Male') }}</option>
                 <option value="Female">{{ __('Female') }}</option>
             </select>
@@ -81,7 +81,7 @@
         <div class="col-span-6 sm:col-span-4">
             <x-label for="marital_status" value="{{ __('Marital Status') }}" />
             <select id="marital_status" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.marital_status">
-                <option value="" disabled>{{ __('Select Marital Status') }}</option>
+                <option value="" disabled selected>{{ __('Select Marital Status') }}</option>
                 <option value="Single">{{ __('Single') }}</option>
                 <option value="Married">{{ __('Married') }}</option>
                 <option value="Separated">{{ __('Separated') }}</option>
