@@ -99,6 +99,50 @@
         </div>
 
 
+        <!-- Credentials Section -->
+
+            <!-- Department -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="department" value="{{ __('Department') }}" />
+                <select id="department" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.department">
+                    <option value="" disabled selected>{{ __('Select Department') }}</option>
+                    <option value="Admin Department">{{ __('Admin Department') }}</option>
+                    <option value="Technical Department">{{ __('Technical Department') }}</option>
+                </select>
+                <x-input-error for="department" class="mt-2" />
+            </div>
+
+            <!-- Payroll Position -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="payroll_position" value="{{ __('Payroll Position') }}" />
+                <select id="payroll_position" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.payroll_position">
+                    <option value="" disabled selected>{{ __('Select Payroll Position') }}</option>
+                    <option value="Director IV">{{ __('Director IV') }}</option>
+                    <option value="Chief Administrative Officer">{{ __('Chief Administrative Officer') }}</option>
+                    <option value="Supervising Education Program Specialist">{{ __('Supervising Education Program Specialist') }}</option>
+                    <option value="Education Supervisor II">{{ __('Education Supervisor II') }}</option>
+                    <option value="Education Program Specialist II">{{ __('Education Program Specialist II') }}</option>
+                    <option value="Administrative Officer III">{{ __('Administrative Officer III') }}</option>
+                    <option value="Administrative Assistant III">{{ __('Administrative Assistant III') }}</option>
+                    <option value="Administrative Aide VI">{{ __('Administrative Aide VI') }}</option>
+                    <option value="Administrative Aide III">{{ __('Administrative Aide III') }}</option>
+                    <option value="Project Technical Staff III">{{ __('Project Technical Staff III') }}</option>
+                    <option value="Project Technical Staff II">{{ __('Project Technical Staff II') }}</option>
+                    <option value="Project Technical Staff I">{{ __('Project Technical Staff I') }}</option>
+                    <option value="Project Support Staff IV">{{ __('Project Support Staff IV') }}</option>
+                    <option value="Job Order">{{ __('Job Order') }}</option>
+                </select>
+                <x-input-error for="payroll_position" class="mt-2" />
+            </div>
+
+            <!-- Designation -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="designation" value="{{ __('Designation') }}" />
+                <x-input id="designation" type="text" class="mt-1 block w-full" wire:model="state.designation" />
+                <x-input-error for="designation" class="mt-2" />
+            </div>
+
+
     </x-slot>
 
     <x-slot name="actions">
