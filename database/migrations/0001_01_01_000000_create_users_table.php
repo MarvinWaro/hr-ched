@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
 
-            $table->string('employee_no')->nullable();
+            $table->string('employee_no')->unique()->nullable(); // Make employee_no unique
             $table->string('usertype')->default('user');
 
             // Add new fields
@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
