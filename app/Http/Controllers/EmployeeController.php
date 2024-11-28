@@ -25,7 +25,7 @@ class EmployeeController extends Controller
     public function store(Request $request) {
         // Validate the input
         $request->validate([
-            'employee_no' => 'required|string|max:255',
+            'employee_no' => 'required|string|max:255|unique:users,employee_no', // Ensure employee_no is unique
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -43,5 +43,6 @@ class EmployeeController extends Controller
 
         return redirect()->route('employee')->with('success', 'User created successfully.');
     }
+
 }
 
