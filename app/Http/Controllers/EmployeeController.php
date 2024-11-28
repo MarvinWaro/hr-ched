@@ -17,7 +17,6 @@ class EmployeeController extends Controller
         return view('admin.employee.index', compact('users'));
     }
 
-
     public function create() {
         return view('admin.employee.create-employee');
     }
@@ -32,7 +31,7 @@ class EmployeeController extends Controller
             'usertype' => 'required|in:admin,user',
         ]);
 
-        // Create a new user
+        // Create a new user with only the fields provided
         User::create([
             'employee_no' => $request->employee_no,
             'name' => $request->name,
@@ -45,4 +44,3 @@ class EmployeeController extends Controller
     }
 
 }
-

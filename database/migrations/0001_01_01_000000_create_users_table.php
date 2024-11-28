@@ -15,15 +15,35 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-
             $table->string('employee_no')->unique()->nullable(); // Make employee_no unique
             $table->string('usertype')->default('user');
-
             // Add new fields
             $table->date('birthdate')->nullable(); // New field for birthdate
             $table->enum('gender', ['Male', 'Female'])->nullable(); // New field for gender
             $table->enum('marital_status', ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'])->nullable(); // New field for marital status
             $table->text('address')->nullable(); // New field for address
+            // Department (Admin or Technical)
+            $table->enum('department', ['Admin Department', 'Technical Department'])->nullable(); // Add department field
+            // Payroll Position (with predefined options)
+            $table->enum('payroll_position', [
+                'Director IV',
+                'Chief Administrative Officer',
+                'Supervising Education Program Specialist',
+                'Education Supervisor II',
+                'Education Program Specialist II',
+                'Administrative Officer III',
+                'Administrative Assistant III',
+                'Administrative Aide VI',
+                'Administrative Aide III',
+                'Project Technical Staff III',
+                'Project Technical Staff II',
+                'Project Technical Staff I',
+                'Project Support Staff IV',
+                'Job Order'
+            ])->nullable(); // Add payroll position field
+
+            // Designation (input text field)
+            $table->string('designation')->nullable(); // Add designation field
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -32,6 +52,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
 
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
