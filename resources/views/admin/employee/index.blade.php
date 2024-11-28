@@ -28,7 +28,7 @@
                                         </svg>
                                     </span>
                                 </th>
-                                <th data-type="date" data-format="YYYY/DD/MM">
+                                <th>
                                     <span class="flex items-center">
                                         Employee ID
                                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -87,28 +87,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($users as $user)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
-                                <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">1</td>
-                                <td>001</td>
-                                <td>Marvin Waro</td>
-                                <td>waromarvin@gmail.com</td>
-                                <td>2021/25/09</td>
-                                <td>Male</td>
-                                <td>Married</td>
-                                <td>Korea North</td>
+                                <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</td>
+                                <td>{{ $user->employee_no }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->birthdate ? $user->birthdate->format('Y/m/d') : 'N/A' }}</td>
+                                <td>{{ ucfirst($user->gender) }}</td>
+                                <td>{{ ucfirst($user->marital_status) }}</td>
+                                <td>{{ $user->address ?? 'N/A' }}</td>
                             </tr>
-                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
-                                <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">2</td>
-                                <td>002</td>
-                                <td>Shin Kyu</td>
-                                <td>shin@gmail.com</td>
-                                <td>2021/25/09</td>
-                                <td>Female</td>
-                                <td>Divorce</td>
-                                <td>Korea South</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
+
 
                 </div>
             </div>

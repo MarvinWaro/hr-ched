@@ -17,7 +17,7 @@
                     </x-nav-link>
 
                     @if(Auth::user()->usertype == 'admin') <!-- Only show for admin -->
-                        <x-nav-link href="{{ route('employee') }}" :active="request()->routeIs('employee')">
+                        <x-nav-link href="{{ route('employee') }}" :active="request()->routeIs('employee') || request()->routeIs('employee.create')">
                             {{ __('Employee Management') }}
                         </x-nav-link>
                     @endif

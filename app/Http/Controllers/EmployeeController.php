@@ -10,8 +10,13 @@ use Illuminate\Support\Facades\Validator;
 class EmployeeController extends Controller
 {
     public function index() {
-        return view('admin.employee.index');
+        // Fetch all users (you can filter for employees if needed)
+        $users = User::all(); // Or use User::where('usertype', 'employee')->get() to fetch only employees
+
+        // Pass the users data to the view
+        return view('admin.employee.index', compact('users'));
     }
+
 
     public function create() {
         return view('admin.employee.create-employee');
@@ -24,7 +29,7 @@ class EmployeeController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'usertype' => 'required|in:admin,employee',
+            'usertype' => 'required|in:admin,user',
         ]);
 
         // Create a new user

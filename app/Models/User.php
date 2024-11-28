@@ -20,6 +20,10 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    protected $casts = [
+        'birthdate' => 'date', // This will cast the birthdate to a Carbon date object
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

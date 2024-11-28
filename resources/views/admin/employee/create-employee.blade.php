@@ -17,30 +17,48 @@
                             <div class="w-full">
                                 <label for="employee_no" class="block mb-2 text-sm font-medium text-gray-900">Employee #</label>
                                 <input type="text" name="employee_no" id="employee_no" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5" placeholder="Enter Employee #" required>
+                                @error('employee_no')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="w-full">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
                                 <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5" placeholder="Enter Name" required>
+                                @error('name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="w-full">
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                                 <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5" placeholder="Enter Email" required>
+                                @error('email')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="w-full">
                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                                 <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5" placeholder="Enter Password" required>
+                                @error('password')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="w-full">
                                 <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5" placeholder="Confirm Password" required>
+                                @error('password_confirmation')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="w-full">
                                 <label for="usertype" class="block mb-2 text-sm font-medium text-gray-900">User Type</label>
                                 <select name="usertype" id="usertype" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5" required>
                                     <option value="" disabled selected>Select User Type</option>
                                     <option value="admin">Admin</option>
-                                    <option value="employee">Employee</option>
+                                    <option value="user">Employee</option>
                                 </select>
+                                @error('usertype')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="flex justify-end mt-9">
