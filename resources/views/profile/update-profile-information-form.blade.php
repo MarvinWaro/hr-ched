@@ -16,7 +16,7 @@
 
                 <x-label for="photo" value="{{ __('Photo') }}" />
 
-                <div class="mt-2" x-show="! photoPreview">
+                <div class="mt-2 mb-2" x-show="! photoPreview">
                     <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full size-20 object-cover">
                 </div>
 
@@ -39,35 +39,35 @@
         @endif
 
         <!-- Employee Number -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-3">
             <x-label for="employee_no" value="{{ __('Employee Number') }}" />
             <x-input id="employee_no" type="text" class="mt-1 block w-full" wire:model="state.employee_no" required />
             <x-input-error for="employee_no" class="mt-2" />
         </div>
 
         <!-- Name -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-3">
             <x-label for="name" value="{{ __('Name') }}" />
             <x-input id="name" type="text" class="mt-1 block w-full" wire:model="state.name" required />
             <x-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-3">
             <x-label for="email" value="{{ __('Email') }}" />
             <x-input id="email" type="email" class="mt-1 block w-full" wire:model="state.email" required />
             <x-input-error for="email" class="mt-2" />
         </div>
 
         <!-- Birthdate -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-3">
             <x-label for="birthdate" value="{{ __('Birthdate') }}" />
             <x-input id="birthdate" type="date" class="mt-1 block w-full" wire:model="state.birthdate" />
             <x-input-error for="birthdate" class="mt-2" />
         </div>
 
         <!-- Gender -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-3">
             <x-label for="gender" value="{{ __('Gender') }}" />
             <select id="gender" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.gender">
                 <option value="" disabled selected>{{ __('Select Gender') }}</option>
@@ -78,7 +78,7 @@
         </div>
 
         <!-- Marital Status -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-3">
             <x-label for="marital_status" value="{{ __('Marital Status') }}" />
             <select id="marital_status" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.marital_status">
                 <option value="" disabled selected>{{ __('Select Marital Status') }}</option>
@@ -92,10 +92,53 @@
         </div>
 
         <!-- Address -->
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-6">
             <x-label for="address" value="{{ __('Address') }}" />
             <x-input id="address" type="text" class="mt-1 block w-full" wire:model="state.address" />
             <x-input-error for="address" class="mt-2" />
+        </div>
+
+        <!-- Credentials Section -->
+
+        <!-- Department -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="department" value="{{ __('Department') }}" />
+            <select id="department" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.department">
+                <option value="" disabled selected>{{ __('Select Department') }}</option>
+                <option value="Admin Department">{{ __('Admin Department') }}</option>
+                <option value="Technical Department">{{ __('Technical Department') }}</option>
+            </select>
+            <x-input-error for="department" class="mt-2" />
+        </div>
+
+        <!-- Payroll Position -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="payroll_position" value="{{ __('Payroll Position') }}" />
+            <select id="payroll_position" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.payroll_position">
+                <option value="" disabled selected>{{ __('Select Payroll Position') }}</option>
+                <option value="Director IV">{{ __('Director IV') }}</option>
+                <option value="Chief Administrative Officer">{{ __('Chief Administrative Officer') }}</option>
+                <option value="Supervising Education Program Specialist">{{ __('Supervising Education Program Specialist') }}</option>
+                <option value="Education Supervisor II">{{ __('Education Supervisor II') }}</option>
+                <option value="Education Program Specialist II">{{ __('Education Program Specialist II') }}</option>
+                <option value="Administrative Officer III">{{ __('Administrative Officer III') }}</option>
+                <option value="Administrative Assistant III">{{ __('Administrative Assistant III') }}</option>
+                <option value="Administrative Aide VI">{{ __('Administrative Aide VI') }}</option>
+                <option value="Administrative Aide III">{{ __('Administrative Aide III') }}</option>
+                <option value="Project Technical Staff III">{{ __('Project Technical Staff III') }}</option>
+                <option value="Project Technical Staff II">{{ __('Project Technical Staff II') }}</option>
+                <option value="Project Technical Staff I">{{ __('Project Technical Staff I') }}</option>
+                <option value="Project Support Staff IV">{{ __('Project Support Staff IV') }}</option>
+                <option value="Job Order">{{ __('Job Order') }}</option>
+            </select>
+            <x-input-error for="payroll_position" class="mt-2" />
+        </div>
+
+        <!-- Designation -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="designation" value="{{ __('Designation') }}" />
+            <x-input id="designation" type="text" class="mt-1 block w-full" wire:model="state.designation" />
+            <x-input-error for="designation" class="mt-2" />
         </div>
 
 
