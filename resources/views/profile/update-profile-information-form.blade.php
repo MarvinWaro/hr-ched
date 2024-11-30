@@ -62,26 +62,33 @@
         <!-- Birthdate -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="birthdate" value="{{ __('Birthdate') }}" />
-            <x-input id="birthdate" type="date" class="mt-1 block w-full" wire:model="state.birthdate" />
+            <x-input id="birthdate" type="date" class="mt-1 block w-full" wire:model="state.birthdate" value="{{ old('birthdate', $this->state['birthdate']) }}" />
             <x-input-error for="birthdate" class="mt-2" />
         </div>
 
         <!-- Gender -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="gender" value="{{ __('Gender') }}" />
-            <select id="gender" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.gender">
-                <option value="" disabled selected>{{ __('Select Gender') }}</option>
+            <select id="gender" class="mt-1 block w-full form-select rounded-md border-gray-300"
+                    wire:model="state.gender">
+                <option value="" {{ $this->state['gender'] === null ? 'selected' : '' }}>
+                    {{ __('Select Gender') }}
+                </option>
                 <option value="Male">{{ __('Male') }}</option>
                 <option value="Female">{{ __('Female') }}</option>
             </select>
             <x-input-error for="gender" class="mt-2" />
         </div>
 
+
+
         <!-- Marital Status -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="marital_status" value="{{ __('Marital Status') }}" />
-            <select id="marital_status" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.marital_status">
-                <option value="" disabled selected>{{ __('Select Marital Status') }}</option>
+            <select id="marital_status" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.marital_status">
+                <option value="" {{ $this->state['marital_status'] === null ? 'selected' : '' }}>
+                    {{ __('Select Marital Status') }}
+                </option>
                 <option value="Single">{{ __('Single') }}</option>
                 <option value="Married">{{ __('Married') }}</option>
                 <option value="Separated">{{ __('Separated') }}</option>
@@ -103,8 +110,10 @@
         <!-- Department -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="department" value="{{ __('Department') }}" />
-            <select id="department" class="mt-1 block w-full form-select rounded-md border-gray-300 " wire:model="state.department">
-                <option value="" disabled selected>{{ __('Select Department') }}</option>
+            <select id="department" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.department">
+                <option value="" {{ $this->state['department'] === null ? 'selected' : '' }}>
+                    {{ __('Select Department') }}
+                </option>
                 <option value="Admin Department">{{ __('Admin Department') }}</option>
                 <option value="Technical Department">{{ __('Technical Department') }}</option>
             </select>
@@ -115,7 +124,9 @@
         <div class="col-span-6 sm:col-span-3">
             <x-label for="payroll_position" value="{{ __('Payroll Position') }}" />
             <select id="payroll_position" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.payroll_position">
-                <option value="" disabled selected>{{ __('Select Payroll Position') }}</option>
+                <option value="" {{ $this->state['payroll_position'] === null ? 'selected' : '' }}>
+                    {{ __('Select Payroll Position') }}
+                </option>
                 <option value="Director IV">{{ __('Director IV') }}</option>
                 <option value="Chief Administrative Officer">{{ __('Chief Administrative Officer') }}</option>
                 <option value="Supervising Education Program Specialist">{{ __('Supervising Education Program Specialist') }}</option>
@@ -139,6 +150,39 @@
             <x-label for="designation" value="{{ __('Designation') }}" />
             <x-input id="designation" type="text" class="mt-1 block w-full" wire:model="state.designation" />
             <x-input-error for="designation" class="mt-2" />
+        </div>
+
+        <!-- Place of Assignment -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="place_of_assignment" value="{{ __('Place of Assignment') }}" />
+            <select id="place_of_assignment" class="mt-1 block w-full form-select rounded-md border-gray-300"
+                    wire:model="state.place_of_assignment">
+                <option value="" {{ $this->state['place_of_assignment'] === null ? 'selected' : '' }}>
+                    {{ __('Select Place of Assignment') }}
+                </option>
+                <option value="Zamboanga City">
+                    {{ __('Zamboanga City') }}
+                </option>
+                <option value="Pagadian City">
+                    {{ __('Pagadian City') }}
+                </option>
+            </select>
+            <x-input-error for="place_of_assignment" class="mt-2" />
+        </div>
+
+
+        <!-- Office Email (restricted to @ched.gov.ph) -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="office_email" value="{{ __('Office Email') }}" />
+            <x-input id="office_email" type="email" class="mt-1 block w-full" wire:model="state.office_email" />
+            <x-input-error for="office_email" class="mt-2" />
+        </div>
+
+        <!-- Mobile Number (starting with +63) -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="mobile_number" value="{{ __('Mobile Number') }}" />
+            <x-input id="mobile_number" type="tel" class="mt-1 block w-full" wire:model="state.mobile_number" placeholder="+63XXXXXXXXXX" />
+            <x-input-error for="mobile_number" class="mt-2" />
         </div>
 
 
