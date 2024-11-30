@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the users table
         Schema::create('users', function (Blueprint $table) {
+            // Existing fields
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('employee_no')->unique()->nullable(); // Make employee_no unique
+            $table->string('employee_no')->unique()->nullable();
             $table->string('usertype')->default('user');
-            // Add new fields
-            $table->date('birthdate')->nullable(); // New field for birthdate
-            $table->enum('gender', ['Male', 'Female'])->nullable(); // New field for gender
-            $table->enum('marital_status', ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'])->nullable(); // New field for marital status
-            $table->text('address')->nullable(); // New field for address
-            // Department (Admin or Technical)
-            $table->enum('department', ['Admin Department', 'Technical Department'])->nullable(); // Add department field
-            // Payroll Position (with predefined options)
+
+            $table->date('birthdate')->nullable();
+            $table->enum('gender', ['Male', 'Female'])->nullable()->default(null);
+            $table->enum('marital_status', ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'])->nullable()->default(null);
+            $table->text('address')->nullable();
+
+            $table->enum('department', ['Admin Department', 'Technical Department'])->nullable()->default(null);
             $table->enum('payroll_position', [
                 'Director IV',
                 'Chief Administrative Officer',
@@ -40,11 +41,19 @@ return new class extends Migration
                 'Project Technical Staff I',
                 'Project Support Staff IV',
                 'Job Order'
-            ])->nullable(); // Add payroll position field
+            ])->nullable()->default(null);
+            $table->string('designation')->nullable();
 
-            // Designation (input text field)
-            $table->string('designation')->nullable(); // Add designation field
+            // New fields
+            $table->enum('place_of_assignment', [
+                'Zamboanga City',
+                'Pagadian City',
+            ])->nullable()->default(null); // Place of assignment options
 
+            $table->string('office_email')->unique()->nullable()->default(null); // New office email field (validated as @ched.gov.ph)
+            $table->string('mobile_number')->nullable(); // New mobile number field
+
+            // Additional fields
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -53,14 +62,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
-
-
+        // Create the password_reset_tokens table
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
+        // Create the sessions table
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -81,4 +90,3 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
-
