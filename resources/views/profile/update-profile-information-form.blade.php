@@ -106,7 +106,7 @@
         </div>
 
         <!-- Credentials Section -->
-        <x-label for="credentials" class="col-span-6 sm:col-span-6" value="{{ __('Credentials') }}" />
+        {{-- <x-label for="credentials" class="col-span-6 sm:col-span-6" value="{{ __('Credentials') }}" /> --}}
 
         <!-- Department -->
         <div class="col-span-6 sm:col-span-3">
