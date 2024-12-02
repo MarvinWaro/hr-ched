@@ -54,7 +54,7 @@
                                 </th>
                                 <th>
                                     <span class="flex items-center">
-                                        Birth Date
+                                        Role
                                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                         </svg>
@@ -70,7 +70,7 @@
                                 </th>
                                 <th>
                                     <span class="flex items-center">
-                                        Marital Status
+                                        Department
                                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                         </svg>
@@ -78,7 +78,39 @@
                                 </th>
                                 <th>
                                     <span class="flex items-center">
-                                        Address
+                                        Payroll Position
+                                        <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                        </svg>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="flex items-center">
+                                        Designation
+                                        <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                        </svg>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="flex items-center">
+                                        Place of Assignment
+                                        <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                        </svg>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="flex items-center">
+                                        Date Employed
+                                        <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                        </svg>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="flex items-center">
+                                        Employment Status
                                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                         </svg>
@@ -93,10 +125,14 @@
                                 <td>{{ $user->employee_no }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->birthdate ? $user->birthdate->format('Y/m/d') : 'N/A' }}</td>
+                                <td>{{ $user->usertype }}</td>
                                 <td>{{ ucfirst($user->gender) }}</td>
-                                <td>{{ ucfirst($user->marital_status) }}</td>
-                                <td>{{ $user->address ?? 'N/A' }}</td>
+                                <td>{{ $user->department }}</td>
+                                <td>{{ $user->payroll_position }}</td>
+                                <td>{{ $user->designation }}</td>
+                                <td>{{ $user->place_of_assignment }}</td>
+                                <td>{{ $user->date_employed }}</td>
+                                <td>{{ $user->employment_status }}</td>
                             </tr>
                             @endforeach
                         </tbody>

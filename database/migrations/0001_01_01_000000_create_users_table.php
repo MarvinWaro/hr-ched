@@ -53,6 +53,16 @@ return new class extends Migration
             $table->string('office_email')->unique()->nullable()->default(null); // New office email field (validated as @ched.gov.ph)
             $table->string('mobile_number')->nullable(); // New mobile number field
 
+            // Add new fields for employee credentials and employment details
+            $table->string('tin')->unique()->nullable(); // TIN, unique
+            $table->string('gsis')->unique()->nullable(); // GSIS, unique
+            $table->string('crn')->unique()->nullable(); // CRN, unique
+            $table->string('sss')->unique()->nullable(); // SSS, unique
+            $table->string('philhealth')->unique()->nullable(); // PhilHealth, unique
+
+            $table->date('date_employed')->nullable(); // Date of employment
+            $table->enum('employment_status', ['Active', 'Inactive'])->default('Active'); // Employment status dropdown
+
             // Additional fields
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
