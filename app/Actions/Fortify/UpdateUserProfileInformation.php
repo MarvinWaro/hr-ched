@@ -33,7 +33,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             // New fields validation
             'place_of_assignment' => ['nullable', Rule::in(['Zamboanga City', 'Pagadian City'])],
             'office_email' => ['nullable', 'email', 'regex:/@ched\.gov\.ph$/'], // Office email (only accepts @ched.gov.ph)
-            'mobile_number' => ['nullable', 'regex:/^\+63\d{10}$/'], // Mobile number validation for Philippines (+63 followed by 10 digits)
+            'mobile_number' => ['nullable', 'regex:/^\+63\d{10}$/'],
+
+            'tin' => ['nullable', 'string', 'max:255'], // TIN validation
+            'gsis' => ['nullable', 'string', 'max:255'], // GSIS validation
+            'crn' => ['nullable', 'string', 'max:255'], // CRN validation
+            'sss' => ['nullable', 'string', 'max:255'], // SSS validation
+            'philhealth' => ['nullable', 'string', 'max:255'], // Philhealth validation
+            'date_employed' => ['nullable', 'date'], // Date employed validation
+            'employment_status' => ['nullable', 'in:Active,Inactive'], // Employment status validation
+// Mobile number validation for Philippines (+63 followed by 10 digits)
 
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
@@ -91,6 +100,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'place_of_assignment' => $input['place_of_assignment'], // Save place of assignment
                 'office_email' => $input['office_email'], // Save office email
                 'mobile_number' => $input['mobile_number'], // Save mobile number
+                'tin' => $input['tin'], // Save TIN to the database
+                'gsis' => $input['gsis'], // Save GSIS to the database
+                'crn' => $input['crn'], // Save CRN to the database
+                'sss' => $input['sss'], // Save SSS to the database
+                'philhealth' => $input['philhealth'], // Save Philhealth to the database
+                'date_employed' => $input['date_employed'], // Save date employed to the database
+                'employment_status' => $input['employment_status'], // Save employment status to the database
+
             ])->save();
         }
     }
@@ -118,6 +135,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'place_of_assignment' => $input['place_of_assignment'], // Save place of assignment
             'office_email' => $input['office_email'], // Save office email
             'mobile_number' => $input['mobile_number'], // Save mobile number
+            'tin' => $input['tin'], // Save TIN to the database
+            'gsis' => $input['gsis'], // Save GSIS to the database
+            'crn' => $input['crn'], // Save CRN to the database
+            'sss' => $input['sss'], // Save SSS to the database
+            'philhealth' => $input['philhealth'], // Save Philhealth to the database
+            'date_employed' => $input['date_employed'], // Save date employed to the database
+            'employment_status' => $input['employment_status'], // Save employment status to the database
+
             'email_verified_at' => null,
         ])->save();
 

@@ -62,7 +62,7 @@
         <!-- Birthdate -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="birthdate" value="{{ __('Birthdate') }}" />
-            <x-input id="birthdate" type="date" class="mt-1 block w-full" wire:model="state.birthdate" value="{{ old('birthdate', $this->state['birthdate']) }}" />
+            <x-input id="birthdate" type="date" class="mt-1 block w-full" wire:model="state.birthdate" />
             <x-input-error for="birthdate" class="mt-2" />
         </div>
 
@@ -106,6 +106,7 @@
         </div>
 
         <!-- Credentials Section -->
+        <x-label for="credentials" class="col-span-6 sm:col-span-6" value="{{ __('Credentials') }}" />
 
         <!-- Department -->
         <div class="col-span-6 sm:col-span-3">
@@ -170,7 +171,6 @@
             <x-input-error for="place_of_assignment" class="mt-2" />
         </div>
 
-
         <!-- Office Email (restricted to @ched.gov.ph) -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="office_email" value="{{ __('Office Email') }}" />
@@ -185,6 +185,66 @@
             <x-input-error for="mobile_number" class="mt-2" />
         </div>
 
+        <!-- TIN -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="tin" value="{{ __('TIN') }}" />
+            <x-input id="tin" type="text" class="mt-1 block w-full" wire:model="state.tin" />
+            <x-input-error for="tin" class="mt-2" />
+        </div>
+
+        <!-- GSIS -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="gsis" value="{{ __('GSIS') }}" />
+            <x-input id="gsis" type="text" class="mt-1 block w-full" wire:model="state.gsis" />
+            <x-input-error for="gsis" class="mt-2" />
+        </div>
+
+        <!-- CRN -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="crn" value="{{ __('CRN') }}" />
+            <x-input id="crn" type="text" class="mt-1 block w-full" wire:model="state.crn" />
+            <x-input-error for="crn" class="mt-2" />
+        </div>
+
+        <!-- SSS -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="sss" value="{{ __('SSS') }}" />
+            <x-input id="sss" type="text" class="mt-1 block w-full" wire:model="state.sss" />
+            <x-input-error for="sss" class="mt-2" />
+        </div>
+
+        <!-- PhilHealth -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="philhealth" value="{{ __('PhilHealth') }}" />
+            <x-input id="philhealth" type="text" class="mt-1 block w-full" wire:model="state.philhealth" />
+            <x-input-error for="philhealth" class="mt-2" />
+        </div>
+
+        <!-- Date Employed -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="date_employed" value="{{ __('Date Employed') }}" />
+            <x-input id="date_employed" type="date" class="mt-1 block w-full" wire:model="state.date_employed" />
+            <x-input-error for="date_employed" class="mt-2" />
+        </div>
+
+        <!-- Employment Status -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-label for="employment_status" value="{{ __('Employment Status') }}" />
+            <select id="employment_status" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.employment_status"
+                @if(auth()->user()->is_admin)
+                    {{ $this->state['employment_status'] === null ? 'selected' : '' }}
+                @else
+                    disabled
+                @endif
+            >
+                <option value="" {{ $this->state['employment_status'] === null ? 'selected' : '' }}>
+                    {{ __('Select Employment Status') }}
+                </option>
+                <option value="Active">{{ __('Active') }}</option>
+                <option value="Inactive">{{ __('Inactive') }}</option>
+            </select>
+            <x-input-error for="employment_status" class="mt-2" />
+        </div>
 
     </x-slot>
 
