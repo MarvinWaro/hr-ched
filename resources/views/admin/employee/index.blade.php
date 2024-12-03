@@ -106,7 +106,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#!" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                <a href="{{ route('employee.edit', $user->id) }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                     <i class="fa-solid fa-pen-to-square me-2"></i>Edit
                                                 </a>
                                             </li>

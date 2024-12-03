@@ -18,6 +18,11 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
     Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store'); // Route to store user
 
+
+    Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+    Route::put('/employee/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+
+
 });
 
 
