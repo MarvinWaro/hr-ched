@@ -108,4 +108,21 @@ class EmployeeController extends Controller
         return redirect()->route('employee')->with('success', 'User updated successfully.');
     }
 
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Soft delete or hard delete depending on your requirement
+        // Example for soft delete:
+        // $user->active = 0;
+        // $user->exclude = 1;
+        // $user->save();
+
+        // For hard delete, you can use:
+        $user->delete();
+
+        return redirect()->route('employee')->with('success', 'User deleted successfully.');
+    }
+
+
 }

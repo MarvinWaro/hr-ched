@@ -30,6 +30,14 @@
                                 </th>
                                 <th class="bg-gray-800 text-white">
                                     <span class="flex items-center hover:text-gray-200">
+                                        Photo
+                                        <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                        </svg>
+                                    </span>
+                                </th>
+                                <th class="bg-gray-800 text-white">
+                                    <span class="flex items-center hover:text-gray-200">
                                         Name
                                         <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
@@ -82,6 +90,15 @@
                             @foreach($users as $user)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
                                 <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $user->id }} - {{ $user->employee_no }}</td>
+                                <td>
+                                    <!-- Check if profile photo exists and display it -->
+                                    @if($user->profile_photo_path)
+                                        <img src="{{ asset('storage/' . $user->profile_photo_path) }}" alt="Profile Photo" class="rounded-full w-12 h-12 object-cover">
+                                    @else
+                                        <!-- Fallback image in case no photo is set -->
+                                        No Photo
+                                    @endif
+                                </td>
                                 <td>{{ $user->name }}<br>{{ $user->email }}</td>
                                 <td>{{ $user->department }}<br>{{ $user->payroll_position }}</td>
                                 <td>{{ $user->designation }}</td>
@@ -112,7 +129,7 @@
                                             </li>
                                             <hr class="w-[90%] mx-auto">
                                             <li>
-                                                <form action="#!" method="POST" class="delete-form">
+                                                <form action="{{ route('employee.destroy', $user->id) }}" method="POST" class="delete-form">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="delete-button w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center focus:outline-none">
@@ -276,5 +293,16 @@
         })
     })
     }
+
+
+
+    
+    document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            if (!confirm('Are you sure you want to delete this user?')) {
+                e.preventDefault();
+            }
+        });
+    });
 
 </script>
