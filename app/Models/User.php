@@ -38,6 +38,21 @@ class User extends Authenticatable
         'birthdate',
         'gender',
         'marital_status',
+        'address',
+        'department',
+        'payroll_position',
+        'designation',
+        'place_of_assignment',
+        'office_email',
+        'mobile_number',
+        'tin',
+        'gsis',
+        'crn',
+        'sss',
+        'philhealth',
+        'date_employed',
+        'employment_status',
+
     ];
 
 

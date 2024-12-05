@@ -111,20 +111,35 @@
         <!-- Department -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="department" value="{{ __('Department') }}" />
-            <select id="department" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.department">
+            <select id="department" class="mt-1 block w-full form-select rounded-md border-gray-300"
+                wire:model="state.department"
+                @if(auth()->user()->usertype == 'admin')
+                    {{ $this->state['department'] === null ? 'selected' : '' }}
+                @else
+                    disabled
+                @endif
+            >
                 <option value="" {{ $this->state['department'] === null ? 'selected' : '' }}>
                     {{ __('Select Department') }}
                 </option>
                 <option value="Admin Department">{{ __('Admin Department') }}</option>
                 <option value="Technical Department">{{ __('Technical Department') }}</option>
             </select>
+
             <x-input-error for="department" class="mt-2" />
         </div>
 
         <!-- Payroll Position -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="payroll_position" value="{{ __('Payroll Position') }}" />
-            <select id="payroll_position" class="mt-1 block w-full form-select rounded-md border-gray-300" wire:model="state.payroll_position">
+            <select id="payroll_position" class="mt-1 block w-full form-select rounded-md border-gray-300"
+                wire:model="state.payroll_position"
+                @if(auth()->user()->usertype == 'admin')
+                    {{ $this->state['payroll_position'] === null ? 'selected' : '' }}
+                @else
+                    disabled
+                @endif
+            >
                 <option value="" {{ $this->state['payroll_position'] === null ? 'selected' : '' }}>
                     {{ __('Select Payroll Position') }}
                 </option>
@@ -146,30 +161,34 @@
             <x-input-error for="payroll_position" class="mt-2" />
         </div>
 
-        <!-- Designation -->
+
         <div class="col-span-6 sm:col-span-3">
             <x-label for="designation" value="{{ __('Designation') }}" />
-            <x-input id="designation" type="text" class="mt-1 block w-full" wire:model="state.designation" />
+            <x-input id="designation" type="text" class="mt-1 block w-full text-gray-500" wire:model="state.designation" disabled />
             <x-input-error for="designation" class="mt-2" />
         </div>
+
 
         <!-- Place of Assignment -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="place_of_assignment" value="{{ __('Place of Assignment') }}" />
             <select id="place_of_assignment" class="mt-1 block w-full form-select rounded-md border-gray-300"
-                    wire:model="state.place_of_assignment">
+                wire:model="state.place_of_assignment"
+                @if(auth()->user()->usertype == 'admin')
+                    {{ $this->state['place_of_assignment'] === null ? 'selected' : '' }}
+                @else
+                    disabled
+                @endif
+            >
                 <option value="" {{ $this->state['place_of_assignment'] === null ? 'selected' : '' }}>
                     {{ __('Select Place of Assignment') }}
                 </option>
-                <option value="Zamboanga City">
-                    {{ __('Zamboanga City') }}
-                </option>
-                <option value="Pagadian City">
-                    {{ __('Pagadian City') }}
-                </option>
+                <option value="Zamboanga City">{{ __('Zamboanga City') }}</option>
+                <option value="Pagadian City">{{ __('Pagadian City') }}</option>
             </select>
             <x-input-error for="place_of_assignment" class="mt-2" />
         </div>
+
 
         <!-- Office Email (restricted to @ched.gov.ph) -->
         <div class="col-span-6 sm:col-span-3">
@@ -223,7 +242,7 @@
         <!-- Date Employed -->
         <div class="col-span-6 sm:col-span-3">
             <x-label for="date_employed" value="{{ __('Date Employed') }}" />
-            <x-input id="date_employed" type="date" class="mt-1 block w-full" wire:model="state.date_employed" />
+            <x-input id="date_employed" type="date" class="mt-1 block w-full text-gray-500" wire:model="state.date_employed" disabled/>
             <x-input-error for="date_employed" class="mt-2" />
         </div>
 
