@@ -21,6 +21,10 @@
                             {{ __('Employee Management') }}
                         </x-nav-link>
                     @endif
+
+                    <x-nav-leave href="#" :dropdown="true" class="flex justify-center items-center">
+                     {{ __('Leave') }}
+                  </x-nav-lea>
                 </div>
 
             </div>

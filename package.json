@@ -17,7 +17,11 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@material-tailwind/html": "^2.3.2",
+        "apexcharts": "^4.2.0",
         "flowbite": "^2.5.2",
+        "lodash": "^4.17.21",
+        "preline": "^2.6.0",
         "simple-datatables": "^9.2.1"
     }
 }
