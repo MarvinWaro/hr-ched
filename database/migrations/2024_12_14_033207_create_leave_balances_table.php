@@ -14,9 +14,12 @@ return new class extends Migration
       Schema::create('leave_balances', function (Blueprint $table) {
          $table->id();
          $table->unsignedBigInteger('user_id');
-         $table->foreign('user_id')->references('id')->on('users');
-         $table->unsignedBigInteger('leavetype_id');
-         $table->foreign('leavetype_id')->references('id')->on('leave_types');
+         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+         // Foreign key to leave_details
+         $table->unsignedBigInteger('leave_detail_id');
+         $table->foreign('leave_detail_id')->references('id')->on('leave_details')->onDelete('cascade');
+
          $table->integer('balance_days')->default(0);
          $table->year('year')->nullable(); // Optional
          $table->timestamps();

@@ -40,7 +40,12 @@
            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                <div class="px-5 py-5 justify-end flex">
 
-                   <x-leave-apply-table/>
+                   <x-leaveapplytable :leave-requests="$leave_requests"/>
+
+                   <!-- Add Livewire Component for Edit and Delete -->
+                   {{-- @foreach ($leave_requests as $leave_request)
+                     @livewire('leave-request-actions', ['leaveRequestId' => $leave_request->id])
+                   @endforeach --}}
                </div>
            </div>
        </div>

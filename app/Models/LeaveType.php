@@ -18,6 +18,12 @@ class LeaveType extends Model
       'description',
    ];
 
+   public static function getForDropdown()
+   {
+      return self::pluck('leave_name', 'id')->toArray();
+   }
+
+
    /**
     * Get the leave requests for the leave type.
     */

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\LeaveRequest;
+use App\Models\LeaveName;
+use App\Models\LeaveDetail;
 use Illuminate\Http\Request;
 
 class LeaveController extends Controller
@@ -16,8 +19,11 @@ class LeaveController extends Controller
    public function apply()
    {
       $users = User::all();
-      return view('admin.leave.apply', compact('users'));
+      $leave_requests = LeaveRequest::with('leaveDetail')->get();
+      // dd($leave_requests);
+      return view('admin.leave.apply', compact('users', 'leave_requests'));
    }
+
 
    public function requests()
    {

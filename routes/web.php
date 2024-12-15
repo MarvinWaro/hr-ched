@@ -27,5 +27,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
       Route::get('/employee/leave-manage', 'manage')->name('leave.manage');
       Route::get('/employee/leave-policies', 'policies')->name('leave.policies');
       Route::get('/employee/leave-balances', 'balances')->name('leave.balances');
+      Route::get('/leave-request/edit/{id}', 'edit')->name('leaveRequest.edit');
+
    });
 });
