@@ -17,7 +17,7 @@
          <!-- Modal Header -->
          <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-bold text-gray-800">Apply for Leave</h2>
-            <button wire:click="closeModal" class="text-gray-400 hover:text-gray-600">
+            <button type="button" wire:click="closeModal" class="text-gray-400 hover:text-gray-600">
                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                </svg>
@@ -56,7 +56,9 @@
          <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700">Upload Files (Optional)</label>
             <input type="file" wire:model="files" multiple class="block w-full text-sm text-gray-900 border-gray-300 rounded-lg shadow-sm cursor-pointer focus:ring-blue-400 focus:border-blue-400">
-            @error('files.*') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            @foreach ($errors->get('files.*') as $fileError)
+               <span class="text-red-500 text-sm">{{ $fileError[0] }}</span>
+            @endforeach
          </div>
 
          <!-- Reason -->
@@ -67,18 +69,23 @@
          </div>
 
          <!-- Form Submission -->
-         <form wire:submit.prevent="applyLeave">
+         <form wire:submit="applyLeave">
             <!-- Buttons -->
             <div class="flex justify-end space-x-4">
                <button
+                  type="button"
                   wire:click="closeModal"
                   class="inline-flex items-center gap-2 bg-gray-200 text-gray-700 py-2 px-4 rounded-lg shadow-md hover:bg-gray-300 transition-all">
                   Cancel
                </button>
                <button
                   type="submit"
-                  class="inline-flex items-center gap-2 bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition-all">
-                  Submit
+                  class="inline-flex items-center gap-2 bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition-all"
+                  wire:loading.attr="disabled"
+                  wire:loading.class="bg-green-400"
+                  wire:target="applyLeave"> <!-- Scope the loading to applyLeave -->
+                  <span wire:loading.remove wire:target="applyLeave">Submit</span>
+                  <span wire:loading wire:target="applyLeave">Processing...</span>
                </button>
             </div>
          </form>
@@ -86,3 +93,10 @@
    </div>
    @endif
 </div>
+<script>
+   window.addEventListener('leaveUpdated', () => {
+       setTimeout(() => {
+           window.location.reload(); // Reload the page
+       }, 2000); // 1.5-second delay
+   });
+</script>

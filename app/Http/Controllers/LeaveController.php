@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\LeaveRequest;
 use App\Models\LeaveName;
 use App\Models\LeaveDetail;
+use App\Models\LeaveBalance;
 use Illuminate\Http\Request;
 
 class LeaveController extends Controller
@@ -45,7 +46,8 @@ class LeaveController extends Controller
 
    public function balances()
    {
+      $balances = LeaveBalance::all();
       $users = User::all();
-      return view('admin.leave.balances', compact('users'));
+      return view('admin.leave.balances', compact('users', 'balances'));
    }
 }

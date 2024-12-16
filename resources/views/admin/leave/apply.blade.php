@@ -37,7 +37,7 @@
 
    <div class="py-2">
        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-           <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+           <div class="">
                <div class="px-5 py-5 justify-end flex">
 
                    <x-leaveapplytable :leave-requests="$leave_requests"/>

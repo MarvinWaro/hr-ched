@@ -23,7 +23,9 @@ $classes = ($active ?? false)
             <x-dropdown-leave-item label="Dashboard" route="leave"></x-dropdown-leave-item>
             <x-dropdown-leave-item label="Apply leave" route="leave.apply"></x-dropdown-leave-item>
             <x-dropdown-leave-item label="My requests leave" route="leave.requests"></x-dropdown-leave-item>
-            <x-dropdown-leave-item label="Manage leave" route="leave.manage"></x-dropdown-leave-item>
+            @if(Auth::user()->usertype == 'admin') <!-- Only show for admin -->
+               <x-dropdown-leave-item label="Manage leave" route="leave.manage"></x-dropdown-leave-item>
+            @endif
             <x-dropdown-leave-item label="Leave policies" route="leave.policies"></x-dropdown-leave-item>
             <x-dropdown-leave-item label="Leave balances" route="leave.balances"></x-dropdown-leave-item>
          </ul>
